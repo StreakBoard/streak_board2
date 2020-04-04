@@ -74,8 +74,6 @@ Route::resource('upgradeaccount', 'UpgradeaccountController');
 // used to submit task in the database
 Route::post('submit_task', 'TaskController@submit_tasks');
 
-//use to delete tasks
-Route::post('delete_task', 'TaskController@delete_tasks');
 //used to view page of inviation A/c to team id
 Route::get('invite/{team_id}', 'InvitationController@invitation_page')->name('invite');
 // Route::get('show/{team_id}', 'InvitationController@send_inviation')->name('show');

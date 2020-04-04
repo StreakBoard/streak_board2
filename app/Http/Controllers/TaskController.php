@@ -249,20 +249,6 @@ public function SubmitTaskloadData()
 
 }
 
-    public function delete_tasks()
-    {
-        $id = request()->except('_token');
-
-        if ($id > 0) {
-            $count = count($id['tskids']);
-            for ($i = 0; $i < $count; $i++) {
-                DB::table('tasks')
-                    ->where('id', $id['tskids'][$i])
-                    ->delete();
-            }
-        }
-        return json_encode(array('data'=>[]));
-    }
 
 
 }

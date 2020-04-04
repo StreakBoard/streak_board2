@@ -392,66 +392,8 @@
 
 		<script>
 		$.noConflict();
-		$(document).ready(function(){
-            toastr.options = {
-                "closeButton": true,
-                "progressBar": true,
-                "positionClass": "toast-bottom-right",
-                "preventDuplicates": true,
-                "onclick": null,
 
-            }
-        });
-        $(".submit-task-button").click(function(){
-            let ids = [];
-            $('.tasks_ids:checked').each(function () {
-                ids.push($(this).val());
-            });
-            console.log(ids);
-            var token = $("meta[name='csrf-token']").attr("content");
-             $.ajax(
-                {
-                    url: "{{ URL('submit_task') }}",
-                    type: 'POST',
-                    data: {
-                        "tskids": ids,
-                        "_token": token,
-                    },
-                    success: function (dataResult) {
-                        toastr.success('Tasks completed');
-                        setTimeout(function () {
-                            location.reload();
-                        }, 3000);
-                    }
-                }
-             );
 
-        });
-        $(".delete-task-button").click(function(){
-            let ids = [];
-            $('.tasks_ids:checked').each(function () {
-                ids.push($(this).val());
-            });
-            console.log(ids);
-            var token = $("meta[name='csrf-token']").attr("content");
-            $.ajax(
-                {
-                    url: "{{ URL('delete_task') }}",
-                    type: 'POST',
-                    data: {
-                        "tskids": ids,
-                        "_token": token,
-                    },
-                    success: function (dataResult) {
-                        toastr.success('Tasks deleted');
-                        setTimeout(function () {
-                            location.reload();
-                        }, 3000);
-                    }
-                }
-            );
-
-        });
 		$(".add-task-button").click(function(){
 			var name = "";
 			var name = $('#New-Task').val();
@@ -467,8 +409,7 @@
 			success: function (dataResult){
 						$("#info").show();
 						$("#info").delay(2000).fadeOut();
-                        toastr.success('Task added');
-						setTimeout(function(){location.reload();}, 3000);
+                location.reload();
 					}
 			});
 		{{--	if(name){--}}
